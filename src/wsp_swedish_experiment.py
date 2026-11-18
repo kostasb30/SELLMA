@@ -10,7 +10,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 # 1. CONFIGURATION & REPRODUCIBILITY
 # ==========================================
 SEED = 42
-MODEL_ID = "Qwen/Qwen2.5-1.5B-Instruct"
+MODEL_ID = "Qwen/Qwen2.5-0.5B-Instruct"
 RESULTS_DIR = "results"
 
 def set_seed(seed: int):
