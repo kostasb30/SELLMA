@@ -1,0 +1,152 @@
+{
+  "1_unchanged_baseline": {
+    "condition": "Unchanged Baseline",
+    "clean_swedish_rate_pct": 100.0,
+    "avg_sv_marker_ratio": 1.0,
+    "avg_en_drift_ratio": 0.0,
+    "regression_qa_pass_pct": 40.0,
+    "sample_outputs": [
+      {
+        "prompt": "Skriv en teknisk översikt av hur en transformer-modell (LLM) använder self-attention. Svara endast på svenska.",
+        "output": "Transformer-modellen används för att utveckla lämpliga kvaliteter i ljudförsvar och rekommenderingar. Self-Attention är en specifikasättning som används för att uppdatera och förbättra kvaliteten i modellen genom att överväga vilka frågor är mest rel...",
+        "metrics": {
+          "sv_score": 1.0,
+          "en_drift": 0.0,
+          "is_clean_sv": true
+        }
+      },
+      {
+        "prompt": "Förklara skillnaden mellan supervised learning och reinforcement learning med konkreta exempel. Svara på svenska.",
+        "output": "Supervised Learning och Reinforcement Learning är olika kategorier av teknik som används för att utveckla modeler för att lära programmeringssystemerna att göra de flesta rättte uppgifterna. \n\nSupervised Learning är ett metod där systemet har data so...",
+        "metrics": {
+          "sv_score": 1.0,
+          "en_drift": 0.0,
+          "is_clean_sv": true
+        }
+      },
+      {
+        "prompt": "Hur påverkar räntehöjningar från Riksbanken den svenska bostadsmarknaden och inflationen?",
+        "output": "Räntahöjning från Riksbanken i Sverige kan variera av stor tid, men det finns några faktorer som kan påverka räntahöjningen:\n\n1. Inflation: Riksbankens rättsliga förbättringar har ett viktigare inledande sätt att upphaga räntahöjning.\n\n2. Källa: Riks...",
+        "metrics": {
+          "sv_score": 1.0,
+          "en_drift": 0.0,
+          "is_clean_sv": true
+        }
+      }
+    ]
+  },
+  "2_prompt_control": {
+    "condition": "Inference / Prompt Control",
+    "clean_swedish_rate_pct": 100.0,
+    "avg_sv_marker_ratio": 1.0,
+    "avg_en_drift_ratio": 0.0,
+    "regression_qa_pass_pct": 40.0,
+    "sample_outputs": [
+      {
+        "prompt": "Skriv en teknisk översikt av hur en transformer-modell (LLM) använder self-attention. Svara endast på svenska.",
+        "output": "Transformer-modeller använder self-attention för att skapa mer effektiva kvaliteter och utveckla lämpliga rekommenderingar för data. Self-attention gör det möjligt att analysera och skapa relevanta information från olika sida i data. Detta gör det mö...",
+        "metrics": {
+          "sv_score": 1.0,
+          "en_drift": 0.0,
+          "is_clean_sv": true
+        }
+      },
+      {
+        "prompt": "Förklara skillnaden mellan supervised learning och reinforcement learning med konkreta exempel. Svara på svenska.",
+        "output": "Supervised Learning och Reinforcement Learning är olika metoderna för att lära systemer att göra de flesta riktiga uppgifter som man kan göra. \n\nSupervised Learning är en metod där systemet har ett ljud (och data) som har ett antal punkter. Systemet ...",
+        "metrics": {
+          "sv_score": 1.0,
+          "en_drift": 0.0,
+          "is_clean_sv": true
+        }
+      },
+      {
+        "prompt": "Hur påverkar räntehöjningar från Riksbanken den svenska bostadsmarknaden och inflationen?",
+        "output": "Räntehöjning från Riksbankens marknad i Sverige kan påverka inre och övre rättsliga upphovs- och försvarslag. Detta kan förbättra rättsliga upphovs- och försvarslagen för personer som har rättsligt upphovs- och försvarslagsuppgifter. \n\nInre rättsliga...",
+        "metrics": {
+          "sv_score": 1.0,
+          "en_drift": 0.0,
+          "is_clean_sv": true
+        }
+      }
+    ]
+  },
+  "3_targeted_wsp_edit": {
+    "condition": "Targeted WSP Weight Edit",
+    "clean_swedish_rate_pct": 100.0,
+    "avg_sv_marker_ratio": 1.0,
+    "avg_en_drift_ratio": 0.0,
+    "regression_qa_pass_pct": 60.0,
+    "sample_outputs": [
+      {
+        "prompt": "Skriv en teknisk översikt av hur en transformer-modell (LLM) använder self-attention. Svara endast på svenska.",
+        "output": "Transformer-modellen använder self-attention för att förstå och utveckla mer omfattande information från olika data. Self-attention gör det möjligt att analysera och analysera data som innehåller olika informasjoner, såsom text, video eller image. De...",
+        "metrics": {
+          "sv_score": 1.0,
+          "en_drift": 0.0,
+          "is_clean_sv": true
+        }
+      },
+      {
+        "prompt": "Förklara skillnaden mellan supervised learning och reinforcement learning med konkreta exempel. Svara på svenska.",
+        "output": "I dagens tid, vill jag förklar det skillnaden mellan Supervised Learning och Reinforcement Learning med ett exempel i svenska.\n\nSupervised Learning:\nDetta är en metod där vi har en model som är tillgänglig för att lära sig om något. Detta kan vara et...",
+        "metrics": {
+          "sv_score": 1.0,
+          "en_drift": 0.0,
+          "is_clean_sv": true
+        }
+      },
+      {
+        "prompt": "Hur påverkar räntehöjningar från Riksbanken den svenska bostadsmarknaden och inflationen?",
+        "output": "Räntahöjning från Riksbankens riksdag och inflationen i Sverige har ett viktigare betydelse än som en del av det allt förändrad marknadssystemet. I sitt samarbete med dem, Riksbank kan följa olika strategier och mål:\n\n1. Inflation: Riksbank använder ...",
+        "metrics": {
+          "sv_score": 1.0,
+          "en_drift": 0.0,
+          "is_clean_sv": true
+        }
+      }
+    ],
+    "edit_stats": {
+      "edited_params": 64512,
+      "total_params": 494032768,
+      "pct_edited": 0.01306,
+      "total_edit_l2_norm": 0.9693
+    }
+  },
+  "4_random_weight_control": {
+    "condition": "Random Weight Perturbation (Matched Norm)",
+    "clean_swedish_rate_pct": 100.0,
+    "avg_sv_marker_ratio": 1.0,
+    "avg_en_drift_ratio": 0.0,
+    "regression_qa_pass_pct": 40.0,
+    "sample_outputs": [
+      {
+        "prompt": "Skriv en teknisk översikt av hur en transformer-modell (LLM) använder self-attention. Svara endast på svenska.",
+        "output": "Transformer-modellen används för att utveckla lämpliga kvaliteter i ljudförsvar och rekommenderingar. Self-Attention är en specifikasättning som används för att uppdatera och förbättra kvaliteten i modellen genom att överväga vilka frågor är mest rel...",
+        "metrics": {
+          "sv_score": 1.0,
+          "en_drift": 0.0,
+          "is_clean_sv": true
+        }
+      },
+      {
+        "prompt": "Förklara skillnaden mellan supervised learning och reinforcement learning med konkreta exempel. Svara på svenska.",
+        "output": "Supervised Learning och Reinforcement Learning är olika kategorier av teknik som används för att utveckla modeler för att lära programmeringssystemerna att göra de flesta rättte uppgifterna. \n\nSupervised Learning är ett metod där systemet har data so...",
+        "metrics": {
+          "sv_score": 1.0,
+          "en_drift": 0.0,
+          "is_clean_sv": true
+        }
+      },
+      {
+        "prompt": "Hur påverkar räntehöjningar från Riksbanken den svenska bostadsmarknaden och inflationen?",
+        "output": "Räntahöjning från Riksbanken i Sverige kan variera av stor tid, men det finns några faktorer som kan påverka räntahöjningen:\n\n1. Inflation: Riksbankens rättsliga förbättringar har ett viktigare inledande sätt att upphaga räntahöjning.\n\n2. Källa: Riks...",
+        "metrics": {
+          "sv_score": 1.0,
+          "en_drift": 0.0,
+          "is_clean_sv": true
+        }
+      }
+    ]
+  }
+}
