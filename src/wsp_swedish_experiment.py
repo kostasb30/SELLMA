@@ -253,7 +253,7 @@ def main():
     print(f"Loading {MODEL_ID} on {device} ({dtype})...")
 
     tokenizer = AutoTokenizer.from_pretrained(MODEL_ID)
-    base_model = AutoModelForCausalLM.from_pretrained(MODEL_ID, torch_dtype=dtype).to(device)
+    base_model = AutoModelForCausalLM.from_pretrained(MODEL_ID, torch_dtype=dtype, low_cpu_mem_usage=True).to(device)
     base_model.eval()
 
     num_layers = len(base_model.model.layers)
@@ -276,25 +276,33 @@ def main():
     )
 
     # 3. Targeted Weight-Space Programming (WSP) Edit
-    wsp_model = copy.deepcopy(base_model)
-    direction = extract_language_direction(wsp_model, tokenizer, target_layer_idx=target_layers[1])
+    print("\n--- Preparing Targeted WSP Edit ---")
+    # Extract direction from base model
+    direction = extract_language_direction(base_model, tokenizer, target_layer_idx=target_layers[1])
+    
+    # Reload fresh base model to apply edits cleanly without memory spike
+    del base_model
+    if device == "cuda":
+        torch.cuda.empty_cache()
+    
+    wsp_model = AutoModelForCausalLM.from_pretrained(MODEL_ID, torch_dtype=dtype, low_cpu_mem_usage=True).to(device)
     edit_stats = apply_targeted_wsp_edit(wsp_model, direction, target_layers=target_layers, alpha=0.12, top_k_frac=0.005)
     print(f"\nWSP Edit Stats: {edit_stats}")
     wsp_res = run_evaluation(wsp_model, tokenizer, "Targeted WSP Weight Edit")
     wsp_res["edit_stats"] = edit_stats
     all_results["3_targeted_wsp_edit"] = wsp_res
     del wsp_model
-    if device == "cuda":
-        torch.cuda.empty_cache()
 
     # 4. Control: Random Weight Perturbation (Matched L2 Norm & Sparsity)
-    rand_model = copy.deepcopy(base_model)
+    rand_model = AutoModelForCausalLM.from_pretrained(MODEL_ID, torch_dtype=dtype, low_cpu_mem_usage=True).to(device)
     apply_random_weight_control(
         rand_model, target_layers=target_layers, target_l2_norm=edit_stats["total_edit_l2_norm"], top_k_frac=0.005
     )
     all_results["4_random_weight_control"] = run_evaluation(
         rand_model, tokenizer, "Random Weight Perturbation (Matched Norm)"
     )
+    del rand_model
+       
 
     output_path = os.path.join(RESULTS_DIR, "metrics.json")
     with open(output_path, "w", encoding="utf-8") as f:
